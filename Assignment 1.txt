@@ -1,0 +1,73 @@
+Assignment 1
+Introduction to Structured Query Language (SQL)  Syllabus, Course Calendar, Blackboard, Google Drive & Docs, File Systems & Database Concepts
+
+a) A description of the process of waking up in the morning and preparing to either go to school or go to work.
+
+8:30 - Alarm goes off.
+8:31 - Disable alarm.  Wake up.
+8:45 - Shower.
+9:00 - Get dressed.
+9:15 - Take dog(Myles) outside.
+9:29 - Say goodbye to fiance(Jamie) if she hasn’t left before me.
+9:30 - Drive to work.
+9:45 - Get coffee at Starbucks on way to work.
+10:00 - Arrive at work.
+
+b) A list of the entities/objects which are involved in the process.
+
+Alarm
+Shower
+Clothes
+Myles
+Jamie
+Car
+Wallet
+Coffee
+Work
+
+c) A list of the data to be stored about each entity/object identified.
+
+Alarm
+-Alarm Time
+-Snooze Duration
+
+Shower
+-Shave?(y/n)
+-Duration
+
+Clothes
+-Shirt
+-Top Layer
+-Pants
+-Socks
+-Underwear
+-Shoes
+
+Myles
+-Husky
+-Needs Food(y/n)
+-Needs Water(y/n)
+-Did he poop?(y/n)
+
+Jamie
+-Fiance
+-Left Before Me?(y/n)
+
+Car
+-Mazda
+-Gas
+-Snow needs removing?(y/n)
+-Distance to Work for Drive.
+
+Wallet
+-Bank Account Balance on Card
+-RFID tag for Work
+
+Coffee
+-Black(y/n)  Always y.
+-Cost
+-Size
+
+Work
+-Start Time
+-End Time
