@@ -2,6 +2,7 @@ Assignment 3
 Chapters 4 & 5, Murach SQL Server 2012
 SQL Queries: How to retrieve data from a relational database / Partners and Groups assigned
 
+
 1.  Write a SELECT statement that joins the Categories table to the Products table and returns 
 these columns: CategoryName, ProductName, ListPrice.
 Sort the result set by CategoryName and then by ProductName in ascending order.
