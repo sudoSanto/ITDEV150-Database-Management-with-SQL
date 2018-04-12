@@ -1,6 +1,7 @@
 Assignment 1
 Introduction to Structured Query Language (SQL)  Syllabus, Course Calendar, Blackboard,
 Google Drive & Docs, File Systems & Database Concepts
+Database Models: What is a database? Different database models, Becoming familiar with the SQL Server and the management studio.
 
 a) A description of the process of waking up in the morning and preparing to either go to school or go to work.
 
