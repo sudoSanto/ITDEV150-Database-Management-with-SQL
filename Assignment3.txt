@@ -1,0 +1,204 @@
+Assignment 3
+Chapters 4 & 5, Murach SQL Server 2012
+SQL Queries: How to retrieve data from a relational database / Partners and Groups assigned
+
+1.  Write a SELECT statement that joins the Categories table to the Products table and returns 
+these columns: CategoryName, ProductName, ListPrice.
+Sort the result set by CategoryName and then by ProductName in ascending order.
+
+select c.CategoryName, p.ProductName, p.ListPrice
+from Products p
+join Categories c on c.CategoryID = p.CategoryID
+order by 1, 2 asc
+
+
+2.  Write a SELECT statement that joins the Customers table to the Addresses table and returns 
+these columns: FirstName, LastName, Line1, City, State, ZipCode.
+Return one row for each address for the customer with an email address of 
+allan.sherwood@yahoo.com.
+
+select c.FirstName, c.LastName, a.Line1, a.City, a.State, a.ZipCode
+from Addresses a
+join Customers c on c.CustomerID = a.CustomerID
+where c.EmailAddress = 'allan.sherwood@yahoo.com'
+
+
+3.  Write a SELECT statement that joins the Customers table to the Addresses table and returns 
+these columns: FirstName, LastName, Line1, City, State, ZipCode.
+Return one row for each customer, but only return addresses that are the shipping address for a 
+customer.
+
+select c.FirstName, c.LastName, a.Line1, a.City, a.State, a.ZipCode
+from Addresses a
+join Customers c on c.CustomerID = a.CustomerID
+where c.BillingAddressID = c.ShippingAddressID
+
+
+4.  Write a SELECT statement that joins the Customers, Orders, OrderItems, and Products 
+tables. This statement should return these columns: LastName, FirstName, OrderDate, 
+ProductName, ItemPrice, DiscountAmount, and Quantity.
+Use aliases for the tables.
+Sort the final result set by LastName, OrderDate, and ProductName.
+
+select c.LastName, c.FirstName, o.OrderDate, p.ProductName, oi.ItemPrice, oi.DiscountAmount, oi.Quantity
+from Orders o
+join Customers c on c.CustomerID = o.CustomerID 
+join OrderItems oi on oi.OrderID = o.OrderID
+join Products p on p.ProductID = oi.ProductID
+order by 1, 3, 4
+
+
+5.  Write a SELECT statement that returns the ProductName and ListPrice columns from the 
+Products table.
+Return one row for each product that has the same list price as another product. Hint: Use a 
+self-join to check that the ProductID columns aren’t equal but the ListPrice column is equal.
+Sort the result set by ProductName.
+
+select p.ProductName, p.ListPrice
+from Products p
+join Products p1 on p1.ListPrice = p.ListPrice
+and p.ProductID != p1.ProductID
+order by 1
+
+
+6.  Write a SELECT statement that returns these two columns:
+CategoryName          The CategoryName column from the Categories table
+ProductID             The ProductID column from the Products table
+Return one row for each category that has never been used. Hint: Use an outer join and only 
+return rows where the ProductID column contains a null value.
+
+select c.CategoryName, p.ProductID
+from Categories c
+left join Products p on p.CategoryID = c.CategoryID
+where p.ProductID is null
+
+
+7.  Use the UNION operator to generate a result set consisting of three columns from the Orders table:
+ShipStatus          	A calculated column that contains a value of SHIPPED or NOT SHIPPED
+OrderID              	The OrderID column
+OrderDate           	The OrderDate column
+If the order has a value in the ShipDate column, the ShipStatus column should contain a value of SHIPPED. Otherwise, it should contain a value of NOT SHIPPED.
+Sort the final result set by OrderDate.
+
+select 'SHIPPED' as ShipStatus, OrderID, OrderDate
+from Orders
+where ShipDate is not null
+union
+select 'NOT SHIPPED' as ShipStatus, OrderID, OrderDate
+from Orders
+where ShipDate is null
+order by 3
+
+
+8.  Write a SELECT statement that returns these columns:
+  The count of the number of orders in the Orders table
+  The sum of the TaxAmount columns in the Orders table
+
+select count(*) as "Number of Orders", sum(TaxAmount) as "Total Tax Amount"
+from Orders
+
+
+9.  Write a SELECT statement that returns one row for each category that has products with these columns:
+  The CategoryName column from the Categories table
+  The count of the products in the Products table
+  The list price of the most expensive product in the Products table
+Sort the result set so the category with the most products appears first.
+
+select c.CategoryName,
+(select count(*)
+  from Products p
+  where p.CategoryID = c.CategoryID) as "Number Of Products",
+(select top 1 p1.ListPrice
+  from Products p1
+  where p1.CategoryID = c.CategoryID
+  order by 1 desc) as "Most Expensive Product"
+from Categories c
+where (select count(*)
+  from Products p2
+  where p2.CategoryID = c.CategoryID) > 0
+order by 2 desc
+
+
+10.  Write a SELECT statement that returns one row for each customer that has orders with 
+these columns:
+  The EmailAddress column from the Customers table
+  The sum of the item price in the OrderItems table multiplied by the quantity in the 
+    OrderItems table
+  The sum of the discount amount column in the OrderItems table multiplied by the 
+    quantity in the OrderItems table
+Sort the result set in descending sequence by the item price total for each customer.
+
+select c.EmailAddress,
+sum(oi.ItemPrice * oi.Quantity) as TotalPrice,
+sum(oi.DiscountAmount * oi.Quantity) as TotalDiscount
+from Customers c, Orders o, OrderItems oi
+where c.CustomerID = o.CustomerID
+and o.OrderID = oi.OrderID
+group by c.EmailAddress
+order by 2 desc
+
+
+11.  Write a SELECT statement that returns one row for each customer that has orders with 
+these columns:
+  The EmailAddress column from the Customers table
+  A count of the number of orders
+  The total amount for each order (Hint: First, subtract the discount amount from 
+    the price. Then, multiply by the quantity.)
+Return only those rows where the customer has more than than 1 order.
+Sort the result set in descending sequence by the sum of the line item amounts.
+
+select c.EmailAddress,
+count(*) as NumberOfOrders,
+sum(oi.ItemPrice * oi.Quantity) - sum(oi.DiscountAmount * oi.Quantity) as TotalPriceWithDiscount
+from Customers c, Orders o, OrderItems oi
+where c.CustomerID = o.CustomerID
+and o.OrderID = oi.OrderID
+group by c.EmailAddress
+having count(*) > 1
+order by 3 desc
+
+
+12.  Modify the solution to exercise 11 so it only counts and totals line items that have an 
+ItemPrice value that’s greater than 400.
+
+select c.EmailAddress,
+count(*) as NumberOfOrders,
+sum(oi.ItemPrice * oi.Quantity) - sum(oi.DiscountAmount * oi.Quantity) as TotalPriceWithDiscount
+from Customers c, Orders o, OrderItems oi
+where c.CustomerID = o.CustomerID
+and o.OrderID = oi.OrderID
+and oi.ItemPrice > 400
+group by c.EmailAddress
+having count(*) > 1
+order by 3 desc
+
+
+13.  Write a SELECT statement that answers this question: What is the total amount ordered for 
+each product? Return these columns:
+  The product name from the Products table
+  The total amount for each product in the OrderItems table (Hint: You can calculate the total 
+    amount by subtracting the discount amount from the item price and then multiplying it by the 
+    quantity)
+Use the WITH ROLLUP operator to include a row that gives the grand total.
+
+select p.ProductName,
+sum(oi.ItemPrice * oi.Quantity) - sum(oi.DiscountAmount * oi.Quantity) as ProductTotal
+from Products p, Orders o, OrderItems oi
+where p.ProductID = oi.ProductID
+and oi.OrderID = o.OrderID
+group by p.ProductName with rollup
+
+
+14.  Write a SELECT statement that answers this question: Which customers have ordered more 
+than one product? Return these columns:
+  The email address from the Customers table
+  The count of distinct products from the customer’s orders
+
+select c.EmailAddress,
+count(distinct p.ProductID) as NumberOfProducts
+from Customers c, Orders o, OrderItems oi, Products p
+where c.CustomerID = o.CustomerID
+and o.OrderID = oi.OrderID
+and p.ProductID = oi.ProductID
+group by c.EmailAddress
+having count(distinct p.ProductID) > 1
