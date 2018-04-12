@@ -1,0 +1,30 @@
+Assignment 7
+Database Design: Normalization
+
+
+1.
+Orders(OrderNumber, ProductNumber, ProductDescription, ProductPrice, ItemQuantity, 
+OrderDate, PromisedDate, SalesPerson, CustomerName, PhoneNumber, Address, City, State, 
+Zip)
+
+
+2.
+Orders(OrderNumber, OrderDate, PromisedDate, SalesPerson, CustomerName, 
+PhoneNumber, Address, City, State, Zip)
+
+OrderItems(ItemID, OrderNumber, ProductNumber, ProductDescription, ProductPrice, 
+ItemQuantity)
+FK OrderNumber Orders
+
+
+3.
+Orders(OrderNumber, CustomerName, OrderDate, PromisedDate, SalesPerson)
+FK CustomerName Customers
+
+OrderItems(ItemID, OrderNumber, ProductNumber, ItemQuantity)
+FK OrderNumber Orders
+FK ProductNumber Products
+
+Products(ProductNumber, ProductDescription, ProductPrice)
+
+Customers(CustomerName, PhoneNumber, Address, City, State, Zip)
