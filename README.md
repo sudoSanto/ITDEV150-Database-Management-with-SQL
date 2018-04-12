@@ -1,4 +1,4 @@
-ITDEV150-Database-Management-with-SQL
+ITDEV150 Database Management with SQL
 ------
 ### MATC Spring 2018
 
