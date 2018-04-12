@@ -63,8 +63,8 @@ order by 1
 
 
 6.  Write a SELECT statement that returns these two columns:
-  CategoryName          The CategoryName column from the Categories table
-  ProductID             The ProductID column from the Products table
+  CategoryName        The CategoryName column from the Categories table
+  ProductID           The ProductID column from the Products table
 Return one row for each category that has never been used. Hint: Use an outer join and only 
 return rows where the ProductID column contains a null value.
 
@@ -75,9 +75,9 @@ where p.ProductID is null
 
 
 7.  Use the UNION operator to generate a result set consisting of three columns from the Orders table:
-  ShipStatus          	A calculated column that contains a value of SHIPPED or NOT SHIPPED
-  OrderID              	The OrderID column
-  OrderDate           	The OrderDate column
+  ShipStatus          A calculated column that contains a value of SHIPPED or NOT SHIPPED
+  OrderID             The OrderID column
+  OrderDate           The OrderDate column
 If the order has a value in the ShipDate column, the ShipStatus column should contain a value of SHIPPED. Otherwise, it should contain a value of NOT SHIPPED.
 Sort the final result set by OrderDate.
 
