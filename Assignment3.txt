@@ -78,7 +78,8 @@ where p.ProductID is null
   ShipStatus          A calculated column that contains a value of SHIPPED or NOT SHIPPED
   OrderID             The OrderID column
   OrderDate           The OrderDate column
-If the order has a value in the ShipDate column, the ShipStatus column should contain a value of SHIPPED. Otherwise, it should contain a value of NOT SHIPPED.
+If the order has a value in the ShipDate column, the ShipStatus column should contain a value of 
+SHIPPED. Otherwise, it should contain a value of NOT SHIPPED.
 Sort the final result set by OrderDate.
 
 select 'SHIPPED' as ShipStatus, OrderID, OrderDate
