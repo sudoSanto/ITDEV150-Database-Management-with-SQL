@@ -1,0 +1,94 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\lang9\b\f0\fs22 Assignment 7 Discussion\b0\par
+Normalization is a process to ensure that attributes are assigned to the correct entity by measuring the degree of dependency.  Each form of normalization is an acceptable format for use in a relational database management system.  First normal form ensures entity integrity.  Higher level forms help to reduce redundancy and provide for greater efficiency of database operation.\par
+This assignment was an exercise to allow students the opportunity to identify normalization at each of its stages.  Completion of the assignment would require the correct identification of First Normal Form and then the process of breaking that form into its subsequent formats based on partial and transitive dependencies found in First Normal Form.\par
+\b Solution\b0\par
+To complete this assignment, it was best to start by listing all of the attributes.  All items indicated on the Acme Electronics Order Form for which data has to be stored become attributes. \par
+The following are attributes from the form:\par
+Order_number\line Order_date\line Promised_date\line Salesperson\line Customer_number\line Customer_name\line Customer_address\line Customer_city\line Customer_state\line Customer_zip\line Product_number\line Product_description\line Quantity\line Price\line Item Total\par
+\par
+From this list you should be able to normalize to the first normal form and identify partial and transitive dependencies as in (Diagram 1)\par
+\par
+\b The purpose of the ACME Electronics Order Form is to indicate items that are ordered.  \par
+\b0 The difficulty is that multiple ordered items on one order will create repeating groups. The First Normal Form (1NF) should then enable that each product that is ordered is uniquely identified.  Identifying keys are determined in 1NF to eliminate repeating groups. Using Order_Number and Product_Number as the primary key will create a unique identifier that will eliminate repeating groups.\par
+Partial dependencies are discovered if you have more than one identifying attribute in 1NF.  If you have more than one attribute in the primary key you have to look for partial dependencies.  If the entity in 1NF has only one attribute in the primary key, then it it can be considered in 2NF as there should be no partial dependencies.  Since Order_number and Product_number are the components of the primary key in this assignment, the only partial dependencies are any attributes that are more dependent upon either one of those than both of them combined.\par
+Transitive dependencies are any dependent attributes that are more related to another dependent attribute than any component of the primary key.  In this example, Customer Name, Address, City, State  and Zip are more related to Customer Number than to either attribute in the primary key.\par
+From the dependency diagram you can derive the following entities as they would appear in the three different forms of normalization:\par
+\b ACME Electronics    \par
+\b0 1NF \par
+\b Entity:\b0  Ordered Items\par
+Order number, Product number, Order Date, Promised Date, Sales Person, Customer Name, Customer Number, Customer Address, Customer City, Customer Zip, Price, Description, Quantity, Item Total\par
+ \par
+2NF \par
+\b Entity:\b0  Order\par
+Order number, Order Date, Promised Date, Sales Person, Customer Name, Customer Number, Customer Address, Customer City, Customer Zip\par
+\b Entity:\b0  Product\par
+Product number, Description\par
+\b Entity:\b0  Ordered Items\par
+Order number, Product number, Quantity, Price, Item Total\par
+\par
+ 3NF \par
+\b Entity:\b0  Order\par
+Order number, Order Date, Promised Date, Sales Person ,Customer Number\par
+\b Entity:\b0  Product\par
+Product number,  Description\par
+\b Entity:\b0  Ordered Items\par
+Order number, Product number, Quantity, Price, Item Total\par
+\b Entity:\b0  Customer\par
+Customer Number, Customer Name, Customer Address, City, State, Customer Zip\par
+ \par
+Could the data be used correctly in a database in any one of the forms of normalization?  The answer is YES.  Depending on the size of the business and its requirements, entities may be developed to any one of the different forms.  A very small company could use the entity in 1NF, but as the number of orders, customer, and products increased, it would be necessary to move to 3NF to reduce data redundancy and improve operating efficiency.\par
+Remember that normalization is only a checking process.  It is not based upon the requirements of the business.\par
+Also, \b always beware of those people who say that their tables or databases are normalized and do not have a data model.  \b0 Normalization does not mean that the business rules have been used.  Ask them what form the tables have been normalized and then check the business rules.\par
+\par
+\par
+\b PRICE????\b0\par
+Price in the solution shown for this assignment has no partial dependency on Product.  It is considered dependent upon both Order and Product.  The price, because of the positioning on the form, is associated with the item that is purchased.  Allowing for price to be dependent upon Order and Product requires a specific price to be input for the actual sale of the item.  \par
+Price could be considered to have a partial dependency on Product.  The following is an example of the normalization where price was considered dependent upon Product than to the OrderLine:\par
+1NF\par
+Orderline(\b Order_num\b0 , Order_date, Prom_date, Sales_rep, Cust_num, Cust_lname, Cust_fname, Cust_address, Cust_city, Cust_state, Cust_zip, \b Prod_num\b0 , Prod_desc, Prod_qty, Prod_price, Prod_total)\par
+ 2NF\par
+Order(\b Order_num\b0 , Order_date, Prom_date, Sales_rep, Cust_num, Cust_lname, Cust_fname, Cust_address, Cust_city, Cust_state, Cust_zip)\par
+Product(\b Prod_num\b0 , Prod_desc, Prod_price)\par
+OrderLine(\b Order_num\b0 , \b Prod_num\b0 , Prod_qty, Prod_total)\par
+ 3NF\par
+Order(\b Order_num\b0 , Order_date, Prom_date, Sales_rep, Cust_num)\par
+Customer(\b Cust_num\b0 , Cust_lname, Cust_fname, Cust_address, Cust_city, Cust_state, Cust_zip)\par
+Product(\b Prod_num\b0 , Prod_desc, Prod_price)\par
+OrderLine(\b Order_num\b0 , \b Prod_num\b0 , Prod_qty, Prod_total)\par
+\par
+The price of the product sold, in the example above,  is for all product that is sold, not of the product on an individual order.  A price listed in the Product table could be changed independent upon any actual price for which the product was sold.  Example: If a price was sold in June at $1.99, and the price of the product in the Product table was increased to $2.50 in October, what price would be displayed if a a query was done on the order in November?  The query would show the price of the product sold in June to be $2.50, which would be incorrect.  This would be very disastrous to a company if the Prod_Total for each item was a derived value.  If the total for each item sold was based on a derived value, any changes to the price in the Product table would alter the actual sales for the company that would be reported after the changes in October.\par
+The above example is only valid because OrderLine has an attribute for Prod_total which will provide a fixed amount for the actual total value of the product sold for that order.  The difficulty will be in assessing the actual sale price of the item, as no permanent record would be kept.\par
+It is not unusal for Price to be stored in Product to represent the suggested retail price for a product and then to have Price also in an Order_Item table to represent the actual price of a product sold.  The business rules will dictate how Price is to be stored.  As a good rule for developing databases, \b always ensure that any data to be stored for cost or price are approved by the stakeholders of the system.\par
+\b0 No points were deducted for the placement of Price in the assignment.\par
+The issue of Price is an example of how the normalization process does not consider the business rules.  The normalization process is only about checking attributes for their dependencies, not on the business rules.  Normalization by itself, does not produce a good database.  Normalization must be reviewed against the business rules to ensure it is producing a good model.\par
+ \par
+\b Product and Order Totals?????\b0\par
+Item_total is assigned to Ordered_Items in the solution to the assignment.  The total is provided as it was listed on the form and is associated with the total amount of the items ordered.  However, it is not necessary to have Item_total as an attribute.\par
+Item Total on the ACME Electronics Order Form can be considered a \b derived attribute\b0 .  The total value does not need to be stored.  If it is needed to be displayed it can be calculated, or derived, using the quantity ordered and the price of the item.   \par
+When creating a database from assembled documents, it is best to include all elements for which data can be stored and then to check with the stakeholders to ensure that the attributes selected match those for which the company requires.  Derived attributes are particularly dangerous as they may or may not need to be stored.  As a general rule, \b any attributes that are derived from other attributes should be approved by the stakeholders of the system.\b0\par
+An attribute providing for the storage of the total value of the order is not necessary for the assignment as there was no field on the ACME Electronics Order Form indicating that such a value would need to be stored.  The concept of having such an attribute is valid, but the stakeholders of the system need to approve such an attribute if necessary.\par
+No points were deducted if Item_total was missing or if it was assigned to the Ordered_Item entity.  Points were deducted if Item_total was assigned to another table or if Order_Total was used.\par
+ \par
+\b Always start in 1NF?\par
+\b0 If you were to start with a top down approach, most of the entities would be in first or second normal form when you would check the attributes using normalization as the tables would already be identified and attributes would be assigned to the entities.  \par
+From a bottom up approach it is necessary to start with identifying 1NF because tables may be missing in 2NF or 3NF.\par
+Consider the following example based on the assignment that starts at 2NF:\par
+2NF\par
+\b Order \b0 (Order number, Product number, Order Date, Promised Date, Sales Person, Customer Name, Customer Number, Customer Address, Customer City, Customer Zip, Price, Description, Quantity, Item Total)\par
+3NF\par
+\b Order\b0  (Order number, Product number, Order Date, Promised Date, Sales Person, Customer Name, Customer Number, Price,  Quantity, Item Total)\par
+\b Product \b0 (Product number, Description)\par
+\b Customer \b0 (Customer Number, Customer Address, Customer City, Customer Zip)\par
+The tables are in their correct form.  Product and Customer are transitive entities as defined in the 2NF.  Although the forms are correct, the Order table only allows one product to be placed for each order.  There is no Ordered_Items table that allows for more than one product to be associated with each order.\par
+As a general rule, when working from the bottom up with source documents or random data elements, \b assemble all elements and start in 1NF for each source or group of random data elements.\par
+\b0  \par
+\b SalesRep??\b0\par
+The ACME Electronics Order Form only has one field indicating Sales Person.  The solution identifies only one attribute for Sales Person which is assigned to the Order table.  There is no need to create a table for sales person as it does not have a transitive dependency.  An attribute cannot have a transitive dependency upon itself.\par
+Although it appears to be valid, adding attributes and creating a Salesperson table for the assignment is not required based on the data on the ACME Electronics Order Form.  Since there was only one field on the form, it should not be assumed that there is to be more than one field stored.  The single SalesRep attribute could contain the employee_id of an person.  There would not need to be a sales rep table if the sales could then be associated with an employee.  A table for a Sales Representative would not be necessary unless there were business rules to require such a table. \par
+As a general rule when normalizing, \b do not add attributes or create tables without approval of the stakeholders of the system.\par
+\b0  \par
+\b Grading\b0\par
+The assignment was graded on the recognition and use of normalization techniques.  Points were deducted for not indicating keys, missing or unnecessary tables, keys do not provide for entity integrity, not listing tables at each level, unnecessary use of attributes for keys,  format not representative of previous form, and improper use of Normalization Techniques,\par
+}
+ 
