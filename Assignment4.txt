@@ -1,6 +1,6 @@
 Assignment 4
 Chapter 6, Murach SQL Server 2012
-SQL Queries (Cont’d):  Query two or more tables, Summary Queries
+SQL Queries (Cont’d): Subqueries
 
 
 1.  Write a SELECT statement that returns the same result set as this SELECT statement, but 
