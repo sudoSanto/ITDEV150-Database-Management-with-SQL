@@ -1,0 +1,91 @@
+Assignment 4
+Chapter 6, Murach SQL Server 2012
+SQL Queries (Cont’d):  Query two or more tables, Summary Queries
+
+
+1.  Write a SELECT statement that returns the same result set as this SELECT statement, but 
+don’t use a join. Instead, use a subquery in a WHERE clause that uses the IN keyword.
+
+select distinct CategoryName
+from Categories
+where CategoryID in
+  (select CategoryID from Products)
+order by CategoryName
+
+
+2.  Write a SELECT statement that answers this question: Which products have a list price that’s 
+greater than the average list price for all products?
+Return the ProductName and ListPrice columns for each product.
+Sort the results by the ListPrice column in descending sequence.
+
+select ProductName, ListPrice
+from Products
+where ListPrice > (select avg(ListPrice) from Products)
+order by 2 desc
+
+
+3.  Write a SELECT statement that returns the CategoryName column from the Categories table.
+Return one row for each category that has never been assigned to any product in the Products 
+table. To do that, use a subquery introduced with the NOT EXISTS operator.
+
+select CategoryName
+from Categories c
+where not exists
+	(select *
+	from Products p
+	where p.CategoryID = c.CategoryID)
+
+
+4.  Write a SELECT statement that returns three columns: EmailAddress, OrderID, and the item 
+total for each customer. To do this, you can group the result set by the EmailAddress and 
+OrderID columns. In addition, you must calculate the item total from the columns in the 
+OrderItems table.
+Write a second SELECT statement that uses the first SELECT statement in its FROM clause. 
+The main query should return two columns: the customer’s email address and the largest order 
+for that customer. To do this, you can group the result set by the EmailAddress column.
+
+select c.EmailAddress, oi.OrderID, sum((oi.ItemPrice - oi.DiscountAmount) * oi.Quantity) as ItemTotal
+from OrderItems oi join Orders o
+on oi.OrderID = o.OrderID
+join Customers c
+on o.CustomerID = c.CustomerID
+group by c.EmailAddress, oi.OrderID
+
+select EmailOrders.EmailAddress, max(EmailOrders.ItemTotal) as LargestOrder
+from
+	(select c.EmailAddress, oi.OrderID, sum((oi.ItemPrice - oi.DiscountAmount) * oi.Quantity) as ItemTotal
+  from OrderItems oi join Orders o
+  on oi.OrderID = o.OrderID
+  join Customers c
+  on o.CustomerID = c.CustomerID
+	group by c.EmailAddress, oi.OrderID) as EmailOrders
+group by EmailOrders.EmailAddress
+
+
+5.  Write a SELECT statement that returns the name and discount percent of each product that 
+has a unique discount percent. In other words, don’t include products that have the same 
+discount percent as another product.
+Sort the results by the ProductName column.
+
+select p1.ProductName, p1.DiscountPercent
+from Products p1
+where not exists
+	(select *
+	from Products p2
+	where p2.DiscountPercent = p1.DiscountPercent
+	and p2.ProductName != p1.ProductName)
+order by p1.ProductName
+
+
+6.  Use a correlated subquery to return one row per customer, representing the customer’s oldest 
+order (the one with the earliest date). Each row should include these three columns: 
+EmailAddress, OrderID, and OrderDate.
+
+select c.EmailAddress, oID.OrderId, OldestOrders.OldestOrderDate
+from Customers c join
+	(select o1.CustomerID, min(o1.OrderDate) as OldestOrderDate
+	from Orders o1
+	group by o1.CustomerID) as OldestOrders
+on c.CustomerID = OldestOrders.CustomerID
+join Orders oID
+on OldestOrders.OldestOrderDate = oID.OrderDate
