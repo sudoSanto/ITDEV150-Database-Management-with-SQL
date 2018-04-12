@@ -1,6 +1,5 @@
 Assignment 2
-Database Models: What is a database? Different database models, Becoming familiar with the SQL Server and the 
-management studio
+SQL Queries: How to retrieve data from a relational database / Partners and Groups assigned
 
 
 1.  Click the link and follow the activities to Setup the My Guitar Shop database.
