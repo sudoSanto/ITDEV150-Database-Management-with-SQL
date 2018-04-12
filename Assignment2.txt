@@ -38,9 +38,9 @@ order by LastName asc
 
 
 4.  Write a SELECT statement that returns these column names and data from the Products table:
-        ProductName            	The ProductName column
-        ListPrice               The ListPrice column
-        DateAdded               The DateAdded column
+	ProductName		The ProductName column
+	ListPrice		The ListPrice column
+	DateAdded		The DateAdded column
 Return only the rows with a list price that’s greater than 500 and less than 2000.
 Sort the result set in descending sequence by the DateAdded column.
 
@@ -53,11 +53,11 @@ order by DateAdded desc
 
 
 5.  Write a SELECT statement that returns these column names and data from the Products table:
-        ProductName            	The ProductName column
-        ListPrice               The ListPrice column
-        DiscountPercent       	The DiscountPercent column
-        DiscountAmount      	  A column that’s calculated from the previous two columns
-        DiscountPrice           A column that’s calculated from the previous three columns
+	ProductName		The ProductName column
+	ListPrice		The ListPrice column
+	DiscountPercent		The DiscountPercent column
+	DiscountAmount		A column that’s calculated from the previous two columns
+	DiscountPrice		A column that’s calculated from the previous three columns
 Sort the result set by discount price in descending sequence.
 
 select ProductName as "The ProductName column",
@@ -70,14 +70,14 @@ order by 5 desc
 
 
 6.  Write a SELECT statement that returns these column names and data from the OrderItems table:
-	ItemID                     	The ItemID column
-	ItemPrice                  	The ItemPrice column
-	DiscountAmount      	      The DiscountAmount column
-	Quantity                   	The Quantity column
-	PriceTotal                 	A column that’s calculated by multiplying the item price with the quantity
-	DiscountTotal           	  A column that’s calculated by multiplying the discount amount with the quantity
-	ItemTotal                 	A column that’s calculated by subtracting the discount amount from the item 
-                              price and then multiplying by the quantity
+	ItemID			The ItemID column
+	ItemPrice		The ItemPrice column
+	DiscountAmount		The DiscountAmount column
+	Quantity		The Quantity column
+	PriceTotal		A column that’s calculated by multiplying the item price with the quantity
+	DiscountTotal		A column that’s calculated by multiplying the discount amount with the quantity
+	ItemTotal		A column that’s calculated by subtracting the discount amount from the item 
+					price and then multiplying by the quantity
 
 Only return rows where the ItemTotal is greater than 500.
 Sort the result set by item total in descending sequence.
@@ -95,9 +95,9 @@ order by 7 desc
 
 
 7.  Write a SELECT statement that returns these columns from the Orders table:
-	OrderID                    	The OrderID column
-	OrderDate                 	The OrderDate column
-	ShipDate                  	The ShipDate column
+	OrderID			The OrderID column
+	OrderDate		The OrderDate column
+	ShipDate		The ShipDate column
 Return only the rows where the ShipDate column contains a null value.
 
 select OrderId as "The OrderID column",
