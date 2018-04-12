@@ -1,0 +1,107 @@
+Assignment 2
+Database Models: What is a database? Different database models, Becoming familiar with the SQL Server and the 
+management studio
+
+
+1.  Click the link and follow the activities to Setup the My Guitar Shop database.
+Install and Setup SQL Server 2012 Express
+https://docs.google.com/document/d/1VHD4HeLlnbDvFx9_Ps2tChL06692yXmQrOLjFeHSoHI/edit?usp=sharing
+My Guitar Shop
+https://docs.google.com/document/d/16Og2xZS9m_soN-TEgKZBWYO0os4dJVCtOue1WhEGK7E/edit?usp=sharing
+
+Done.
+
+
+2.  Write a SELECT statement that returns four columns from the Products table: 
+ProductCode, ProductName, ListPrice, and DiscountPercent. Then, run this statement to 
+make sure it works correctly.
+Add an ORDER BY clause to this statement that sorts the result set by list price in 
+descending sequence. Then, run this statement again to make sure it works correctly. This 
+is a good way to build and test a statement, one clause at a time.
+
+select ProductCode, ProductName, ListPrice, DiscountPercent 
+from Products
+order by 3 desc
+
+
+3.  Write a SELECT statement that returns one column from the Customers table named 
+FullName that joins the LastName and FirstName columns.
+Format this column with the last name, a comma, a space, and the first name like this:
+	Doe, John
+Sort the result set by last name in ascending sequence.
+Return only the contacts whose last name begins with letters from M to Z.
+
+select LastName + ', ' + FirstName as "Full Name" 
+from Customers 
+where LastName >= 'M' and LastName < 'Z' 
+order by LastName asc
+
+
+4.  Write a SELECT statement that returns these column names and data from the Products table:
+        ProductName            	The ProductName column
+        ListPrice               The ListPrice column
+        DateAdded               The DateAdded column
+Return only the rows with a list price that’s greater than 500 and less than 2000.
+Sort the result set in descending sequence by the DateAdded column.
+
+select ProductName as "The ProductName column", 
+ListPrice as "The ListPrice column", 
+DateAdded as "The DateAdded column" 
+from Products
+where ListPrice > 500 and ListPrice < 2000
+order by DateAdded desc
+
+
+5.  Write a SELECT statement that returns these column names and data from the Products table:
+        ProductName            	The ProductName column
+        ListPrice               The ListPrice column
+        DiscountPercent       	The DiscountPercent column
+        DiscountAmount      	  A column that’s calculated from the previous two columns
+        DiscountPrice           A column that’s calculated from the previous three columns
+Sort the result set by discount price in descending sequence.
+
+select ProductName as "The ProductName column",
+ListPrice as "The ListPrice column",
+DiscountPercent as "The DiscountPercent column",
+cast(((DiscountPercent / 100) * ListPrice) as numeric(12,2)) as "DiscountAmount",
+cast(ListPrice - ((DiscountPercent / 100) * ListPrice) as numeric(12,2)) as "DiscountPrice"
+from Products
+order by 5 desc
+
+
+6.  Write a SELECT statement that returns these column names and data from the OrderItems table:
+	ItemID                     	The ItemID column
+	ItemPrice                  	The ItemPrice column
+	DiscountAmount      	      The DiscountAmount column
+	Quantity                   	The Quantity column
+	PriceTotal                 	A column that’s calculated by multiplying the item price with the quantity
+	DiscountTotal           	  A column that’s calculated by multiplying the discount amount with the quantity
+	ItemTotal                 	A column that’s calculated by subtracting the discount amount from the item 
+                              price and then multiplying by the quantity
+
+Only return rows where the ItemTotal is greater than 500.
+Sort the result set by item total in descending sequence.
+
+select ItemID as "The ItemID column",
+ItemPrice as "The ItemPrice column",
+DiscountAmount as "The DiscountAmount column",
+Quantity as "The Quantity column",
+ItemPrice * Quantity as PriceTotal,
+cast((DiscountAmount * Quantity) as numeric(12,2)) as DiscountTotal,
+cast(((ItemPrice - DiscountAmount) * Quantity) as numeric(12,2)) as ItemTotal
+from OrderItems
+where ((ItemPrice - DiscountAmount) * Quantity) > 500
+order by 7 desc
+
+
+7.  Write a SELECT statement that returns these columns from the Orders table:
+	OrderID                    	The OrderID column
+	OrderDate                 	The OrderDate column
+	ShipDate                  	The ShipDate column
+Return only the rows where the ShipDate column contains a null value.
+
+select OrderId as "The OrderID column",
+OrderDate as "The OrderDate column",
+ShipDate as "The ShipDate column"
+from Orders
+where ShipDate is null
