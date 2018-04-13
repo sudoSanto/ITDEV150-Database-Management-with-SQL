@@ -9,7 +9,7 @@ Assignments
 
 [<img src="https://github.com/favicon.ico" alt="Assignment 1" width="18" height="18">](https://github.com/sudoSanto/ITDEV150-Database-Management-with-SQL/blob/master/Assignment1.txt "Assignment 1")&nbsp;
 **Introduction to Structured Query Language (SQL)**\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Syllabus, Course Calendar, Blackboard, Google Drive & Docs, File Systems & Database Concepts*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Syllabus, Course Calendar, Blackboard, Google Drive & Docs, File Systems & Database Concepts*
 
 [<img src="https://github.com/favicon.ico" alt="Assignment 2" width="18" height="18">](https://github.com/sudoSanto/ITDEV150-Database-Management-with-SQL/blob/master/Assignment2.txt "Assignment 2")&nbsp;
 **Database Models & SQL Queries**\
