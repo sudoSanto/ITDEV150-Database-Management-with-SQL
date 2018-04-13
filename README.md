@@ -100,5 +100,5 @@ ITDEV199 - *Integrated Project*
 ---
 [<img src="https://github.com/sudoSanto/sudoSantoMedia/blob/master/sudoSantoLogoFull.png" alt="WordPress" height="75">](https://sudosaintblog.wordpress.com/ "WordPress")
 [<img src="https://www.linkedin.com/favicon.ico" alt="LinkedIn" width="25" height="25">](https://www.linkedin.com/in/matthew-j-dalsanto/ "LinkedIn")&nbsp;
-[<img src="https://twitter.com/favicon.ico" alt="@sudoSanto" width="25" height="25">](https://twitter.com/sudoSanto "@sudoSanto")&nbsp;
-*/*WordPress site is a holdover from IT107 and will be replaced with an AWS hosted site.*
+[<img src="https://twitter.com/favicon.ico" alt="@sudoSanto" width="25" height="25">](https://twitter.com/sudoSanto "@sudoSanto")&nbsp;\
+*&ast;WordPress site is a holdover from IT107 and will be replaced with an AWS hosted site.*
