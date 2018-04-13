@@ -45,3 +45,7 @@ Assignments
 
 **Final Exam**\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Views, Scripts, Stored Functions, Proceedures & Triggers*
+
+[<img src="https://raw.githubusercontent.com/sudoSanto/ITDEV110-Intro-to-Object-Oriented-Programming/master/sudoSantoLogo.png" alt="WordPress" width="50" height="50">](https://sudosaintblog.wordpress.com/ "WordPress")
+[<img src="https://www.linkedin.com/favicon.ico" alt="LinkedIn" width="18" height="18">](https://www.linkedin.com/in/matthew-j-dalsanto/ "LinkedIn")&nbsp;
+[<img src="https://twitter.com/favicon.ico" alt="@sudoSanto" width="18" height="18">](https://twitter.com/sudoSanto "@sudoSanto")&nbsp;
