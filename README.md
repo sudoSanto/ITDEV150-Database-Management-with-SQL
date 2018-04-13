@@ -7,7 +7,7 @@ Introduction to Microsoft SQL Server.  This course provided a foundation for lea
 Assignments
 ------
 
-[<img src="https://github.com/favicon.ico" alt="Assignment 1" width="18" height="18">](https://github.com/sudoSanto/ITDEV150-Database-Management-with-SQL/blob/master/Assignment1.txt "Assignment 1")&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<img src="https://github.com/favicon.ico" alt="Assignment 1" width="18" height="18">](https://github.com/sudoSanto/ITDEV150-Database-Management-with-SQL/blob/master/Assignment1.txt "Assignment 1")&nbsp;
 **Introduction to Structured Query Language (SQL)**\
 *Syllabus, Course Calendar, Blackboard, Google Drive & Docs, File Systems & Database Concepts*
 
