@@ -9,7 +9,7 @@ don’t use a join. Instead, use a subquery in a WHERE clause that uses the IN k
 select distinct CategoryName
 from Categories
 where CategoryID in
-  (select CategoryID from Products)
+	(select CategoryID from Products)
 order by CategoryName
 
 
