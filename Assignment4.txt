@@ -54,11 +54,11 @@ group by c.EmailAddress, oi.OrderID
 select EmailOrders.EmailAddress, max(EmailOrders.ItemTotal) as LargestOrder
 from
 	(select c.EmailAddress, oi.OrderID, sum((oi.ItemPrice - oi.DiscountAmount) * oi.Quantity) as ItemTotal
-		from OrderItems oi join Orders o
-  		on oi.OrderID = o.OrderID
-  		join Customers c
-  		on o.CustomerID = c.CustomerID
-		group by c.EmailAddress, oi.OrderID) as EmailOrders
+	from OrderItems oi join Orders o
+  	on oi.OrderID = o.OrderID
+  	join Customers c
+  	on o.CustomerID = c.CustomerID
+	group by c.EmailAddress, oi.OrderID) as EmailOrders
 group by EmailOrders.EmailAddress
 
 
