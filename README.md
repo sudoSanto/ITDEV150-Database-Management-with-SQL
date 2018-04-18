@@ -39,6 +39,7 @@ Assignments
 **Database Design (Cont’d)**\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Entity Relationship Diagram (ERD)*
 
+[<img src="https://github.com/favicon.ico" alt="Assignment 9" width="18" height="18">](https://github.com/sudoSanto/ITDEV150-Database-Management-with-SQL/tree/master/Assignment9 "Assignment 9")&nbsp;
 **Create and Maintain Tables with SQL**
 
 **Final Project**
