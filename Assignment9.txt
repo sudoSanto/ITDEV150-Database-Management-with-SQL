@@ -28,7 +28,7 @@ go
 
 use MyWebDB;
 create table Users
-(UserID		int			not null primary key,
+(UserID			int			not null primary key,
 EmailAddress		varchar(50)		null,
 FirstName		varchar(50)		null,
 LastName		varchar(50)		null);
@@ -40,7 +40,7 @@ ProductName		varchar(50)		null);
 create table Downloads
 (DownloadID		int			not null primary key,
 UserID			int			not null references Users (UserID),
-DownloadDate	smalldatetime		null,
+DownloadDate		smalldatetime		null,
 FileName		varchar(50)		null,
 ProductID		int			not null references Products (ProductID));
 
