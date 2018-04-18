@@ -62,9 +62,6 @@ IT107 - *Social Networking and Business*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<img src="https://github.com/favicon.ico" alt="VICOM128 GitHub Repository" width="18" height="18">](https://github.com/sudoSanto/VICOM128-Web-Development-with-HTML-CSS "VICOM128 GitHub Repository")&nbsp;
 VICOM128 - *Web Development with HTML/CSS*
 
-```diff
-- (Current Semester)
-```
 #### Spring 2018
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ECON201 - *Principles of Microeconomics*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<img src="https://github.com/favicon.ico" alt="ITDEV115 GitHub Repository" width="18" height="18">](https://github.com/sudoSanto/ITDEV115-Intermediate-Object-Oriented-Programming "ITDEV115 GitHub Repository")&nbsp;
