@@ -95,7 +95,7 @@ ITDEV199 - *Integrated Project*
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MATH202 - *Trigonometry*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NATSCI184 - *Plant Biology*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PSYCH231 - *Introductory Psychology*\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SOCSCI299 - *Elective*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SOCSCI299 - *Elective - UWM, ARTHIST470 - Topics in American Art: American Woman Artists*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COMART103 - *Creative Design & Composition*
 
 ---
